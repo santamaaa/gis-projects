@@ -30,7 +30,7 @@ function App() {
     <div className="w-full min-h-screen flex justify-center bg-mywhite2">
         <div className="w-full max-w-[1440px] px-6 md:px-20 lg:px-40">
             <div className="mt-4 md:mt-12 flex items-center justify-between">
-                <a className="pr-8 py-2 flex items-center" href="https://santamaa.github.io/profile-page">
+                <a className="pr-8 py-2 flex items-center" href="https://santamaaa.github.io/profile-page">
                     <FontAwesomeIcon className="text-myblack3 text-2xl ease-in duration-300 hover:scale-125" icon={ faArrowLeft } />
                 </a>
                 <h2 className="text-myblack3 text-xl md:text-2xl font-bold">Santamaaa</h2>
