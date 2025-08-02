@@ -1,9 +1,24 @@
 import './App.css'
+import { useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons"
 import { faInstagram, faLinkedinIn, faGithub } from '@fortawesome/free-brands-svg-icons'
+import gisProjects from './assets/gis-projects.js'
 
 function App() {
+  const [modalIsOpen, setModalIsOpen] = useState(false)
+  const [selectedData, setSelectedData] = useState(null)
+
+  const openModal = (data) => {
+      setModalIsOpen(true)
+      setSelectedData(data)
+  }
+
+  const closeModal = () => {
+      setModalIsOpen(false)
+      setSelectedData(null)
+  }
+
   const CurrentYear = () => {
     let date = new Date()
     let year = date.getFullYear()
@@ -18,12 +33,12 @@ function App() {
                 <a className="pr-8 py-2 flex items-center" href="https://santamaa.github.io/profile-page">
                     <FontAwesomeIcon className="text-myblack3 text-2xl ease-in duration-300 hover:scale-125" icon={ faArrowLeft } />
                 </a>
-                <h2 className="text-myblack3 text-xl md:text-2xl font-bold">Santamaa</h2>
+                <h2 className="text-myblack3 text-xl md:text-2xl font-bold">Santamaaa</h2>
             </div>
             <div className="my-20 md:my-36 lg:my-28 text-myblack3 text-left">
                 <h1 className="text-4xl md:text-6xl font-extrabold">I am</h1>
                 <h1 className="mt-2 mb-6 md:mb-10 text-4xl md:text-6xl font-extrabold">GIS Analyst</h1>
-                <p className="text-xs md:text-sm lg:tracking-wide">As a GIS analyst enthusiast, I enjoy exploring, analyzing, and visualizing geographic data to understand the patterns and trends hidden within. I explore various mapping techniques, satellite image processing, and utilize various GIS platforms and software, especially QGIS and Google Earth Engine to create accurate and informative spatial modeling. My dedication to GIS is reflected in my passion to continue learning and deepening my knowledge of spatial analysis, so that I can apply it in my research and beyond.</p>
+                <p className="text-xs md:text-sm/6 lg:tracking-wide">Passionate GIS analyst with a strong interest in spatial data exploration, analysis, and visualization. Skilled in mapping techniques, satellite imagery processing, and tools like QGIS and Google Earth Engine. Committed to continuous learning and applying spatial analysis in research and real-world applications.</p>
                 <div className="mt-12 md:mt-20 flex justify-start gap-4 md:gap-8">
                     <a className="w-10 md:w-12 h-10 md:h-12 grid place-items-center border-2 border-myblack3 rounded-full bg-myblack3 text-mywhite2 text-xl md:text-2xl ease-in duration-300 hover:bg-mywhite2 hover:text-myblack3 hover:scale-125" href="https://instagram.com/santamaaa" target="_blank" rel="noreferrer">
                         <FontAwesomeIcon icon={ faInstagram } />
@@ -38,17 +53,44 @@ function App() {
             </div>
             <div className="w-full">
                 <h2 className="text-3xl md:text-4xl font-semibold text-myblack3 text-left">My Projects</h2>
-                <div className="w-full my-8 md:my-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-                    <div className="w-full h-20 rounded-lg bg-black"></div>
-                    <div className="w-full h-20 rounded-lg bg-black"></div>
-                    <div className="w-full h-20 rounded-lg bg-black"></div>
-                    <div className="w-full h-20 rounded-lg bg-black"></div>
-                    <div className="w-full h-20 rounded-lg bg-black"></div>
+                <div className="w-full my-6 md:my-8 grid grid-cols-1 md:flex md:flex-wrap md:justify-start gap-8">
+                    {
+                        gisProjects.sort((a, b) => b.id - a.id).map((data, index) => (
+                            <div key={index} onClick={() => openModal(data)} className="w-full md:w-[calc((100%-32px)/2)] lg:w-[calc((100%-64px)/3)] relative flex flex-col gap-3 md:gap-4 cursor-pointer duration-200 hover:scale-105 group">
+                                <img src={data.img} className="w-full h-full rounded-md grayscale group-hover:grayscale-0 object-content" alt={data.title} />
+                                <div className="w-full h-full absolute flex flex-col items-center justify-center gap-4 bg-myblack3/60 text-center group-hover:hidden">
+                                    <h3 className="text-base md:text-lg font-semibold text-mywhite2">{data.title}</h3>
+                                    <ul className="w-full flex flex-wrap justify-center gap-4 text-xs font-normal text-mywhite2">
+                                        {data.tech.map((tech, index) => (
+                                            <li key={index} className="text-xs">{tech}</li>
+                                        ))}
+                                    </ul>
+                                </div>
+                            </div>
+                        ))
+                    }
                 </div>
+
+                {
+                    // Modal
+                    modalIsOpen && selectedData && (
+                        <div className="w-screen h-screen fixed top-0 left-0 grid place-items-center">
+                            <div onClick={closeModal} className="w-full h-full relative z-0 bg-myblack3/90"></div>
+                            <div className="w-[80vw] md:w-[480px] p-6 md:p-12 absolute top-50 z-10 flex flex-col items-end border-2 border-mywhite2 rounded-md bg-myblack3 text-right">
+                                <h4 className="text-2xl font-semibold text-mywhite2 md:text-4xl">{selectedData.name}</h4>
+                                <p className="mt-2 mb-6 md:mt-4 md:mb-12 text-xs font-normal text-mywhite2 md:text-sm">{selectedData.desc}</p>
+                                <div className="w-full grid grid-cols-2 gap-6">
+                                    <button onClick={closeModal} className="w-full py-2 md:py-3 grid place-items-center border-2 border-mywhite2 rounded-md bg-myblack3 text-sm md:text-base font-semibold text-mywhite2 duration-300 hover:bg-myblack">Close</button>
+                                    <a href={selectedData.url} target="_blank" rel="noreferrer" onClick={closeModal} className="w-full py-2 md:py-3 grid place-items-center border-2 border-mywhite2 rounded-md bg-mywhite2 text-sm md:text-base font-semibold text-myblack3 duration-300 hover:bg-mywhite">Visit</a>
+                                </div>
+                            </div>
+                        </div>
+                    )
+                }
             </div>
-            <div className="mt-6 mb-3 py-4 md:mt-12 md:mb-6 flex items-center justify-start gap-1 text-myblack3">
+            <div className="mt-20 mb-10 flex items-center justify-start gap-1 text-myblack3">
                 <span className="text-md">&copy;</span>
-                <span className="text-xs">Copyright Santamaa</span>
+                <span className="text-xs">Copyright Santaamaa</span>
                 <CurrentYear />
             </div>
         </div>
