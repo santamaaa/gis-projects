@@ -30,7 +30,7 @@ function App() {
     <div className="w-full min-h-screen flex justify-center bg-mywhite2">
         <div className="w-full max-w-[1440px] px-6 md:px-20 lg:px-40">
             <div className="mt-4 md:mt-12 flex items-center justify-between">
-                <a className="pr-8 py-2 flex items-center" href="https://santamaaa.github.io/profile-page">
+                <a aria-label="Santamaaa's profile page" className="pr-8 py-2 flex items-center" href="https://santamaaa.github.io/profile-page">
                     <FontAwesomeIcon className="text-myblack3 text-2xl ease-in duration-300 hover:scale-125" icon={ faArrowLeft } />
                 </a>
                 <h2 className="text-myblack3 text-xl md:text-2xl font-bold">Santamaaa</h2>
@@ -40,13 +40,13 @@ function App() {
                 <h1 className="mt-2 mb-6 md:mb-10 text-4xl md:text-6xl font-extrabold">GIS Analyst</h1>
                 <p className="text-xs md:text-sm/6 lg:tracking-wide">Passionate GIS analyst with a strong interest in spatial data exploration, analysis, and visualization. Skilled in mapping techniques, satellite imagery processing, and tools like QGIS and Google Earth Engine. Committed to continuous learning and applying spatial analysis in research and real-world applications.</p>
                 <div className="mt-12 md:mt-20 flex justify-start gap-4 md:gap-8">
-                    <a className="w-10 md:w-12 h-10 md:h-12 grid place-items-center border-2 border-myblack3 rounded-full bg-myblack3 text-mywhite2 text-xl md:text-2xl ease-in duration-300 hover:bg-mywhite2 hover:text-myblack3 hover:scale-125" href="https://instagram.com/santamaaa" target="_blank" rel="noreferrer">
+                    <a aria-label="Instagram" className="w-10 md:w-12 h-10 md:h-12 grid place-items-center border-2 border-myblack3 rounded-full bg-myblack3 text-mywhite2 text-xl md:text-2xl ease-in duration-300 hover:bg-mywhite2 hover:text-myblack3 hover:scale-125" href="https://instagram.com/santamaaa" target="_blank" rel="noreferrer">
                         <FontAwesomeIcon icon={ faInstagram } />
                     </a>
-                    <a className="w-10 md:w-12 h-10 md:h-12 grid place-items-center border-2 border-myblack3 rounded-full bg-myblack3 text-mywhite2 text-xl md:text-2xl ease-in duration-300 hover:bg-mywhite2 hover:text-myblack3 hover:scale-125" href="https://linkedin.com/in/santamajati" target="_blank" rel="noreferrer">
+                    <a aria-label="LinkedIn" className="w-10 md:w-12 h-10 md:h-12 grid place-items-center border-2 border-myblack3 rounded-full bg-myblack3 text-mywhite2 text-xl md:text-2xl ease-in duration-300 hover:bg-mywhite2 hover:text-myblack3 hover:scale-125" href="https://linkedin.com/in/santamajati" target="_blank" rel="noreferrer">
                         <FontAwesomeIcon icon={ faLinkedinIn } />
                     </a>
-                    <a className="w-10 md:w-12 h-10 md:h-12 grid place-items-center border-2 border-myblack3 rounded-full bg-myblack3 text-mywhite2 text-xl md:text-2xl ease-in duration-300 hover:bg-mywhite2 hover:text-myblack3 hover:scale-125" href="https://github.com/santamaa" target="_blank" rel="noreferrer">
+                    <a aria-label="Github" className="w-10 md:w-12 h-10 md:h-12 grid place-items-center border-2 border-myblack3 rounded-full bg-myblack3 text-mywhite2 text-xl md:text-2xl ease-in duration-300 hover:bg-mywhite2 hover:text-myblack3 hover:scale-125" href="https://github.com/santamaa" target="_blank" rel="noreferrer">
                         <FontAwesomeIcon icon={ faGithub } />
                     </a>
                 </div>
@@ -80,8 +80,8 @@ function App() {
                                 <h4 className="text-2xl font-semibold text-mywhite2 md:text-4xl">{selectedData.name}</h4>
                                 <p className="mt-2 mb-6 md:mt-4 md:mb-12 text-xs font-normal text-mywhite2 md:text-sm">{selectedData.desc}</p>
                                 <div className="w-full grid grid-cols-2 gap-6">
-                                    <button onClick={closeModal} className="w-full py-2 md:py-3 grid place-items-center border-2 border-mywhite2 rounded-md bg-myblack3 text-sm md:text-base font-semibold text-mywhite2 duration-300 hover:bg-myblack">Close</button>
-                                    <a href={selectedData.url} target="_blank" rel="noreferrer" onClick={closeModal} className="w-full py-2 md:py-3 grid place-items-center border-2 border-mywhite2 rounded-md bg-mywhite2 text-sm md:text-base font-semibold text-myblack3 duration-300 hover:bg-mywhite">Visit</a>
+                                    <button aria-label="Close" onClick={closeModal} className="w-full py-2 md:py-3 grid place-items-center border-2 border-mywhite2 rounded-md bg-myblack3 text-sm md:text-base font-semibold text-mywhite2 duration-300 hover:bg-myblack">Close</button>
+                                    <a href={selectedData.url} aria-label={selectedData.url} target="_blank" rel="noreferrer" onClick={closeModal} className="w-full py-2 md:py-3 grid place-items-center border-2 border-mywhite2 rounded-md bg-mywhite2 text-sm md:text-base font-semibold text-myblack3 duration-300 hover:bg-mywhite">Visit</a>
                                 </div>
                             </div>
                         </div>
