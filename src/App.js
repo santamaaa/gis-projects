@@ -33,11 +33,11 @@ function App() {
                 <a aria-label="Santamaaa's profile page" className="pr-8 py-2 flex items-center" href="https://santamaaa.github.io/profile-page">
                     <FontAwesomeIcon className="text-myblack3 text-2xl ease-in duration-300 hover:scale-125" icon={ faArrowLeft } />
                 </a>
-                <h2 className="text-myblack3 text-xl md:text-2xl font-bold">Santamaaa</h2>
+                <h2 className="text-myblack3 text-xl md:text-2xl font-semibold">Santamaaa</h2>
             </div>
             <div className="my-20 md:my-36 lg:my-28 text-myblack3 text-left">
-                <h1 className="text-4xl md:text-6xl font-extrabold">I am</h1>
-                <h1 className="mt-2 mb-6 md:mb-10 text-4xl md:text-6xl font-extrabold">GIS Analyst</h1>
+                <h1 className="text-4xl md:text-6xl font-bold">I am</h1>
+                <h1 className="mt-2 mb-6 md:mb-10 text-4xl md:text-6xl font-bold">GIS Analyst</h1>
                 <p className="text-xs md:text-sm/6 lg:tracking-wide">Passionate GIS analyst with a strong interest in spatial data exploration, analysis, and visualization. Skilled in mapping techniques, satellite imagery processing, and tools like QGIS and Google Earth Engine. Committed to continuous learning and applying spatial analysis in research and real-world applications.</p>
                 <div className="mt-12 md:mt-20 flex justify-start gap-4 md:gap-8">
                     <a aria-label="Instagram" className="w-10 md:w-12 h-10 md:h-12 grid place-items-center border-2 border-myblack3 rounded-full bg-myblack3 text-mywhite2 text-xl md:text-2xl ease-in duration-300 hover:bg-mywhite2 hover:text-myblack3 hover:scale-125" href="https://instagram.com/santamaaa" target="_blank" rel="noreferrer">
@@ -56,7 +56,7 @@ function App() {
                 <div className="w-full my-6 md:my-8 grid grid-cols-1 md:flex md:flex-wrap md:justify-start gap-8">
                     {
                         gisProjects.sort((a, b) => b.id - a.id).map((data, index) => (
-                            <div key={index} onClick={() => openModal(data)} className="w-full md:w-[calc((100%-32px)/2)] lg:w-[calc((100%-64px)/3)] relative flex flex-col gap-3 md:gap-4 cursor-pointer duration-200 hover:scale-105 group">
+                            <div key={index} onClick={() => openModal(data)} className="w-full aspect-video md:aspect-auto md:w-[calc((100%-32px)/2)] lg:w-[calc((100%-64px)/3)] relative flex flex-col gap-3 md:gap-4 cursor-pointer duration-200 hover:scale-105 group">
                                 <img src={data.img} className="w-full h-full rounded-md grayscale group-hover:grayscale-0 object-content" alt={data.title} />
                                 <div className="w-full h-full absolute flex flex-col items-center justify-center gap-4 bg-myblack3/60 text-center group-hover:hidden">
                                     <h3 className="text-base md:text-lg font-semibold text-mywhite2">{data.title}</h3>
