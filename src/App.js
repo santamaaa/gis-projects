@@ -1,4 +1,3 @@
-import './App.css'
 import { useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons"
@@ -56,8 +55,8 @@ function App() {
                 <div className="w-full my-6 md:my-8 grid grid-cols-1 md:flex md:flex-wrap md:justify-start gap-8">
                     {
                         gisProjects.sort((a, b) => b.id - a.id).map((data, index) => (
-                            <div key={index} onClick={() => openModal(data)} className="w-full aspect-video md:aspect-auto md:w-[calc((100%-32px)/2)] lg:w-[calc((100%-64px)/3)] relative flex flex-col gap-3 md:gap-4 cursor-pointer duration-200 hover:scale-105 group">
-                                <img src={data.img} className="w-full h-full rounded-md grayscale group-hover:grayscale-0 object-content" alt={data.title} />
+                            <div key={index} onClick={() => openModal(data)} className="w-full aspect-video md:aspect-auto md:w-[calc((100%-32px)/2)] lg:w-[calc((100%-64px)/3)] relative flex flex-col gap-3 md:gap-4 rounded-md overflow-hidden cursor-pointer duration-200 hover:scale-105 group">
+                                <img src={data.img} className="w-full h-full object-content" alt={data.title} />
                                 <div className="w-full h-full absolute flex flex-col items-center justify-center gap-4 bg-myblack3/60 text-center group-hover:hidden">
                                     <h3 className="text-base md:text-lg font-semibold text-mywhite2">{data.title}</h3>
                                     <ul className="w-full flex flex-wrap justify-center gap-4 text-xs font-normal text-mywhite2">
